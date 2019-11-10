@@ -1,7 +1,7 @@
 SOURCES=$(wildcard *.go)
 EXEC=disign
 BINARIES=../../bin
-all: version $(EXEC) version
+all: version $(EXEC)
 
 $(EXEC): 
 	go build -o $(BINARIES)/$(EXEC)
