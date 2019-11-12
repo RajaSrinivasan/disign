@@ -57,7 +57,7 @@ func sign(cmd *cobra.Command, args []string) {
 		}
 	}
 	if len(private) == 0 {
-		log.Printf("Need to specify ")
+		log.Fatal("Need to specify private key file\n")
 	}
 	impl.Sign(private, args)
 }

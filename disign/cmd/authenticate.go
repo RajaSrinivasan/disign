@@ -17,7 +17,9 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 
+	"../impl"
 	"github.com/spf13/cobra"
 )
 
@@ -65,4 +67,8 @@ func authenticate(cmd *cobra.Command, args []string) {
 			fmt.Printf("Authenticate %s\n", arg)
 		}
 	}
+	if len(public) == 0 {
+		log.Fatal("Need to specify public key file\n")
+	}
+	impl.Authenticate(public, args)
 }
