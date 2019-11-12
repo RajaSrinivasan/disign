@@ -17,7 +17,9 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 
+	"../impl"
 	"github.com/spf13/cobra"
 )
 
@@ -49,9 +51,13 @@ func init() {
 
 func sign(cmd *cobra.Command, args []string) {
 	if Verbose {
-		fmt.Printf("Public key %s\n", public)
+		fmt.Printf("Private key file %s\n", private)
 		for _, arg := range args {
 			fmt.Printf("Sign %s\n", arg)
 		}
 	}
+	if len(private) == 0 {
+		log.Printf("Need to specify ")
+	}
+	impl.Sign(private, args)
 }
