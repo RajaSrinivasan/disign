@@ -5,7 +5,18 @@ import (
 )
 
 func authenticateFile(file string) {
-	log.Printf("Authenticate file %s\n", file)
+
+	fp, err := fullName(file)
+	if err != nil {
+		log.Printf("File %s does not exist\n", file)
+		return
+	}
+	sfp, err := fullName(file + signatureFileType)
+	if err != nil {
+		log.Printf("Signature file missing. Cannot authenticate %s\n", fp)
+		return
+	}
+	log.Printf("Authenticate file %s using %s\n", fp, sfp)
 }
 
 func Authenticate(pub string, files []string) {

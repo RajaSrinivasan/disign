@@ -26,6 +26,7 @@ import (
 )
 
 var cfgFile string
+var HashAlg string
 var Verbose bool
 
 // rootCmd represents the base command when called without any subcommands
@@ -55,17 +56,10 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.disign.yaml)")
-
+	rootCmd.PersistentFlags().StringVar(&HashAlg, "hash", "sha512", "hash algorithm. sha512|md5 ")
+	rootCmd.MarkFlagRequired("hash")
 	rootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "verbose output")
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	//rootCmd.Flags().BoolP("verbose", "v", false, "Verbose")
 }
 
 // initConfig reads in config file and ENV variables if set.
