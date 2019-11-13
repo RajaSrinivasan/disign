@@ -17,6 +17,12 @@ func authenticateFile(file string) {
 		return
 	}
 	log.Printf("Authenticate file %s using %s\n", fp, sfp)
+	filehash, err := hashFile(fp)
+	if err != nil {
+		return
+	}
+	log.Printf("hash is %s\n", filehash)
+
 }
 
 func Authenticate(pub string, files []string) {
