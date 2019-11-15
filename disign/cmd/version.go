@@ -49,10 +49,10 @@ func init() {
 }
 
 func version(cmd *cobra.Command, args []string) {
-	fmt.Printf("Version : %d.%d-%d\n", VERSION_MAJOR, VERSION_MINOR, VERSION_BUILD)
-	fmt.Printf("Built : %s\n", BUILD_TIME)
-	fmt.Printf("Repo URL : %s\n", REPO_URL)
-	fmt.Printf("Branch : %s\n", BRANCH_NAME)
-	fmt.Printf("Commit Id : Short : %s Long %s\n", SHORT_COMMIT_ID, LONG_COMMIT_ID)
+	fmt.Printf("Version : %d.%d-%d\n", versionMajor, versionMinor, versionBuild)
+	fmt.Printf("Built : %s\n", buildTime)
+	fmt.Printf("Repo URL : %s\n", repoURL)
+	fmt.Printf("Branch : %s\n", branchName)
+	fmt.Printf("Commit Id : Short : %s Long %s\n", shortCommitId, longCommitId)
 
 }
