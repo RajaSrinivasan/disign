@@ -18,8 +18,10 @@ package cmd
 import (
 	"fmt"
 	"log"
+	"path/filepath"
 
 	"../impl"
+	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 )
 
@@ -45,8 +47,13 @@ var authenticateCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(authenticateCmd)
-
-	authenticateCmd.PersistentFlags().StringVarP(&public, "public", "p", "", "Public key file name")
+	h, err := homedir.Dir()
+	if err != nil {
+		log.Printf("%s\n", err)
+	} else {
+		public = filepath.Join(h, ".ssh", "id_rsa.pub")
+	}
+	authenticateCmd.PersistentFlags().StringVarP(&public, "public", "p", public, "Public key file name")
 	authenticateCmd.MarkFlagRequired("public")
 
 }

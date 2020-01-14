@@ -38,7 +38,9 @@ func loadPrivateKey(keyfile string) (*rsa.PrivateKey, error) {
 		log.Printf("%s\n", err)
 		return nil, err
 	}
-	log.Printf("%q\n", key)
+	if Verbose {
+		log.Printf("%q\n", key)
+	}
 	return key.(*rsa.PrivateKey), nil
 }
 
@@ -50,7 +52,9 @@ func sign(file string, sigfile string, pvt *rsa.PrivateKey) error {
 	h := sha256.New()
 	h.Write(databytes)
 	datahash := h.Sum(nil)
-	log.Printf("Datahash: %x\n", datahash)
+	if Verbose {
+		log.Printf("Datahash: %x\n", datahash)
+	}
 
 	signature, err := rsa.SignPKCS1v15(rand.Reader, pvt, crypto.SHA256, datahash[:])
 	if err != nil {
@@ -61,8 +65,9 @@ func sign(file string, sigfile string, pvt *rsa.PrivateKey) error {
 	sigf, _ := os.Create(sigfile)
 	defer sigf.Close()
 	sigf.Write(signature)
-
-	fmt.Printf("Signature: %x\n", signature)
+	if Verbose {
+		fmt.Printf("Signature: %x\n", signature)
+	}
 	return nil
 }
 
