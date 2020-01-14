@@ -59,11 +59,7 @@ func sign(cmd *cobra.Command, args []string) {
 	if len(private) == 0 {
 		log.Fatal("Need to specify private key file\n")
 	}
-	if len(HashAlg) == 0 {
-		log.Fatal("Need to specify a hash algorithm")
-	}
-	impl.HashAlg = HashAlg
 	impl.Verbose = Verbose
+	impl.SignFiles(args, private)
 
-	impl.Sign(private, args)
 }

@@ -28,35 +28,7 @@ func loadPublicKey(pubkey string) (*rsa.PublicKey, error) {
 	return rsapubkey, nil
 }
 
-func authenticateFile(file string) {
-
-	fp, err := fullName(file)
-	if err != nil {
-		log.Printf("File %s does not exist\n", file)
-		return
-	}
-	sfp, err := fullName(file + signatureFileType)
-	if err != nil {
-		log.Printf("Signature file missing. Cannot authenticate %s\n", fp)
-		return
-	}
-	log.Printf("Authenticate file %s using %s\n", fp, sfp)
-	filehash, err := hashFile(fp)
-	if err != nil {
-		return
-	}
-	log.Printf("hash is %s\n", filehash)
-
-}
-
-func Authenticate(pub string, files []string) {
-	log.Printf("Authenticating using %s of %d files\n", pub, len(files))
-	for _, f := range files {
-		authenticateFile(f)
-	}
-}
-
-func verify(file string, sigfile string, pubkey *rsa.PublicKey) error {
+func authenticate(file string, sigfile string, pubkey *rsa.PublicKey) error {
 	databytes, _ := ioutil.ReadFile(file)
 	h := sha256.New()
 	h.Write(databytes)
@@ -72,13 +44,30 @@ func verify(file string, sigfile string, pubkey *rsa.PublicKey) error {
 	return nil
 }
 
-func Verify(file string, sigfile string, pubkeyfile string) error {
+func Authenticate(file string, sigfile string, pubkeyfile string) error {
 
 	rsapubkey, err := loadPublicKey(pubkeyfile)
 	if err != nil {
 		return err
 	}
 	log.Printf("Loaded public key %s\n", pubkeyfile)
-	err = verify(file, sigfile, rsapubkey)
+	err = authenticate(file, sigfile, rsapubkey)
 	return err
+}
+
+func AuthenticateFiles(files []string, pub string) error {
+	log.Printf("Authenticating using %s of %d files\n", pub, len(files))
+	pubkeyfile, err := loadPublicKey(pub)
+	if err != nil {
+		log.Printf("Cannot authenticate files. Unable to load Public Key file\n")
+		return err
+	}
+	for _, f := range files {
+		sigfile := f + signatureFileType
+		err = authenticate(f, sigfile, pubkeyfile)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }

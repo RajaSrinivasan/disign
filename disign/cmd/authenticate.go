@@ -46,18 +46,9 @@ var authenticateCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(authenticateCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// authenticateCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
 	authenticateCmd.PersistentFlags().StringVarP(&public, "public", "p", "", "Public key file name")
 	authenticateCmd.MarkFlagRequired("public")
 
-	// is called directly, e.g.:
-	// authenticateCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 func authenticate(cmd *cobra.Command, args []string) {
@@ -70,5 +61,5 @@ func authenticate(cmd *cobra.Command, args []string) {
 	if len(public) == 0 {
 		log.Fatal("Need to specify public key file\n")
 	}
-	impl.Authenticate(public, args)
+	impl.AuthenticateFiles(args, public)
 }
