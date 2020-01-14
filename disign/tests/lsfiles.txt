@@ -1,0 +1,33 @@
+total 40
+-rw-r--r--   1 rajasrinivasan  staff  11358 Nov  8 07:05 LICENSE
+-rw-r--r--   1 rajasrinivasan  staff    402 Jan 14 08:11 Makefile
+drwxr-x--x   7 rajasrinivasan  staff    224 Nov  9 17:45 cmd
+drwxr-xr-x  13 rajasrinivasan  staff    416 Jan 14 03:22 impl
+-rw-r--r--   1 rajasrinivasan  staff    636 Nov  9 04:26 main.go
+drwxr-xr-x   3 rajasrinivasan  staff     96 Jan 14 11:31 tests
+
+..//cmd:
+total 40
+-rw-r--r--  1 rajasrinivasan  staff  1817 Jan 14 11:30 authenticate.go
+-rw-r--r--  1 rajasrinivasan  staff   356 Jan 14 11:30 cmd.go
+-rw-r--r--  1 rajasrinivasan  staff  1633 Jan 14 10:57 root.go
+-rw-r--r--  1 rajasrinivasan  staff  1157 Jan 14 11:28 sign.go
+-rw-r--r--  1 rajasrinivasan  staff  1871 Nov 16 08:18 version.go
+
+..//impl:
+total 88
+-rw-r--r--  1 rajasrinivasan  staff  1695 Jan 14 10:59 authenticate.go
+-rw-r--r--  1 rajasrinivasan  staff   256 Jan 14 11:03 authenticate.go.sig
+-rw-r--r--  1 rajasrinivasan  staff   806 Jan 14 11:02 authenticate_test.go
+-rw-r--r--  1 rajasrinivasan  staff   256 Jan 14 11:03 authenticate_test.go.sig
+-rw-r--r--  1 rajasrinivasan  staff  1982 Jan 14 03:19 sign.go
+-rw-r--r--  1 rajasrinivasan  staff   256 Jan 14 03:22 sign.go.2.sig
+-rw-r--r--  1 rajasrinivasan  staff   256 Jan 14 11:03 sign.go.sig
+-rw-r--r--  1 rajasrinivasan  staff   665 Jan 14 03:19 sign_test.go
+-rw-r--r--  1 rajasrinivasan  staff   256 Jan 14 03:22 sign_test.go.2.sig
+-rw-r--r--  1 rajasrinivasan  staff   256 Jan 14 11:03 sign_test.go.sig
+-rw-r--r--  1 rajasrinivasan  staff  1096 Nov 13 01:52 tools.go
+
+..//tests:
+total 0
+-rw-r--r--  1 rajasrinivasan  staff  0 Jan 14 11:31 lsfiles.txt
