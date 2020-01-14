@@ -1,13 +1,13 @@
 SOURCES=$(wildcard *.go)
 EXEC=disign
 BINARIES=../../bin
-all: version $(EXEC)
+all: $(EXEC)
 
 $(EXEC): 
 	go build -o $(BINARIES)/$(EXEC)
 
 version:
-	cd cmd; ../$(BINARIES)/srctrace --language go --output cmd
+	cd cmd; ../$(BINARIES)/srctrace --language go -m 0 -n 1 -b 1 --output cmd
 
 clean:
 	$(RM) $(BINARIES)/$(EXEC)
