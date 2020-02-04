@@ -18,3 +18,4 @@ jobs:
       - run: go build
       - run: go test -v ./...
       - store_artifacts:
+          path: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}/disign
