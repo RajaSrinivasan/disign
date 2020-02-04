@@ -5,7 +5,7 @@ import (
 	"log"
 	"path/filepath"
 
-	"../impl"
+	"github.com/RajaSrinivasan/disign/impl"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 )
