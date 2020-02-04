@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-var pubKeyFile = "/Users/rajasrinivasan/.ssh/id_rsa.pub"
+var pubKeyFile = "test_id_rsa.pub"
 
 func TestAuthenticate(t *testing.T) {
 	//t.Println("Testing authentication of digital signatures")

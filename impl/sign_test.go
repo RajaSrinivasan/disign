@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-var pvtKeyFile = "/Users/rajasrinivasan/.ssh/id_rsa"
+var pvtKeyFile = "test_id_rsa"
 
 func TestSign(t *testing.T) {
 
